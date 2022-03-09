@@ -16,7 +16,7 @@ function App() {
     const getPins = async () => {
       try {
         const res = await axios.get("/pins");
-        await setPins(res.data);
+        setPins(res.data);
       } catch (error) {
         console.log(error);
       }
@@ -33,7 +33,7 @@ function App() {
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
         mapStyle="mapbox://styles/sourabhpatole/cl0iddh2h000m14ru0c8zxgmi"
       >
-        {pins.map((p) => {
+        {pins.map((p) => (
           <Marker
             latitude={p.lat}
             longitude={p.long}
@@ -41,38 +41,37 @@ function App() {
             onClick={() => setShowPopup(true)}
           >
             <Room style={{ fontSize: viewport.zoom * 8, color: "slateblue" }} />
-          </Marker>;
-          {
-            showPopup && (
-              <Popup
-                latitude={p.lat}
-                longitude={p.long}
-                anchor="bottom"
-                onClose={() => setShowPopup(false)}
-              >
-                <div className="card">
-                  <label>Place</label>
-                  <h4 className="place">Eiffel Tower</h4>
-                  <label>Review</label>
-                  <p className="desc">Beautiful place..I like it</p>
-                  <label>Rating</label>
-                  <div className="stars">
-                    <Star className="star" />
-                    <Star className="star" />
-                    <Star className="star" />
-                    <Star className="star" />
-                    <Star className="star" />
-                  </div>
-                  <label>Information</label>
-                  <span className="username">
-                    Created by <b>Sourabh</b>
-                  </span>
-                  <span className="date">1 hour ago</span>
-                </div>
-              </Popup>
-            );
-          }
-        })}
+          </Marker>
+        ))}
+        ;
+        {/* {showPopup && (
+          <Popup
+            latitude={p.lat}
+            longitude={p.long}
+            anchor="bottom"
+            onClose={() => setShowPopup(false)}
+          >
+            <div className="card">
+              <label>Place</label>
+              <h4 className="place">{p.title}</h4>
+              <label>Review</label>
+              <p className="desc">{p.desc}</p>
+              <label>Rating</label>
+              <div className="stars">
+                <Star className="star" />
+                <Star className="star" />
+                <Star className="star" />
+                <Star className="star" />
+                <Star className="star" />
+              </div>
+              <label>Information</label>
+              <span className="username">
+                Created by <b>{p.username}</b>
+              </span>
+              <span className="date">1 hour ago</span>
+            </div>
+          </Popup>
+        )} */}
       </ReactMapGL>
     </div>
   );
