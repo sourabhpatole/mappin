@@ -24,3 +24,22 @@ label {
 .date {
   font-size: 12px;
 }
+form {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+input {
+  border: none;
+  border-bottom: 1px solid gray;
+}
+.submitButton {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  color: antiquewhite;
+  background-color: tomato;
+  cursor: pointer;
+}
