@@ -42,7 +42,11 @@ function App() {
               onClick={() => setShowPopup(true)}
             >
               <Room
-                style={{ fontSize: viewport.zoom * 8, color: "slateblue" }}
+                style={{
+                  fontSize: viewport.zoom * 8,
+                  color: "slateblue",
+                  cursor: "pointer",
+                }}
               />
             </Marker>
             {showPopup && (
