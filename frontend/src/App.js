@@ -5,6 +5,7 @@ import axios from "axios";
 import "./app.css";
 function App() {
   const [pins, setPins] = useState([]);
+  const [currentPlaceId, setCurrentPlaceId] = useState(null);
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
@@ -23,7 +24,9 @@ function App() {
     };
     getPins();
   }, []);
-
+  const handleMarkerClick = (id) => {
+    setCurrentPlaceId(id);
+  };
   const [showPopup, setShowPopup] = useState(true);
   return (
     <div className="App">
@@ -43,13 +46,15 @@ function App() {
             >
               <Room
                 style={{
-                  fontSize: viewport.zoom * 8,
+                  fontSize: viewport.zoom * 10,
                   color: "slateblue",
                   cursor: "pointer",
                 }}
+                onClick={() => handleMarkerClick(p._id)}
               />
             </Marker>
-            {showPopup && (
+
+            {p._id === currentPlaceId && showPopup && (
               <Popup
                 latitude={p.lat}
                 longitude={p.long}
