@@ -4,6 +4,7 @@ import { Room, Star } from "@material-ui/icons";
 import axios from "axios";
 import "./app.css";
 function App() {
+  const currentUser = "Aishwarya";
   const [pins, setPins] = useState([]);
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
   const [viewport, setViewport] = useState({
@@ -47,8 +48,8 @@ function App() {
               <Room
                 style={{
                   fontSize: viewport.zoom * 10,
-                  color: "slateblue",
                   cursor: "pointer",
+                  color: p.username === currentUser ? "tomato" : "slateblue",
                 }}
                 onClick={() => handleMarkerClick(p._id)}
               />
