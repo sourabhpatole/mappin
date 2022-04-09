@@ -1,5 +1,28 @@
 {
   "dependencies": {
-    "dotenv": "^16.0.0"
-  }
+    "concurrently": "^7.1.0",
+    "dotenv": "^16.0.0",
+    "nodemon": "^2.0.15"
+  },
+  "name": "mappin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/index",
+    "server": "nodemon backend/index",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sourabhpatole/mappin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sourabhpatole/mappin/issues"
+  },
+  "homepage": "https://github.com/sourabhpatole/mappin#readme",
+  "description": ""
 }
