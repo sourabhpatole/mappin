@@ -5,7 +5,6 @@ import axios from "axios";
 import "./app.css";
 import Register from "./components/Register.jsx";
 import Login from "./components/Login.jsx";
-import { axiosInstance } from "./config";
 
 function App() {
   const myStorage = window.localStorage;
@@ -30,7 +29,7 @@ function App() {
   useEffect(() => {
     const getPins = async () => {
       try {
-        const res = await axiosInstance.get("/pins");
+        const res = await axios.get("/pins");
         setPins(res.data);
       } catch (error) {
         console.log(error);
@@ -65,7 +64,7 @@ function App() {
       long: newPlace.long,
     };
     try {
-      const res = await axiosInstance.post("/pins", newPin);
+      const res = await axios.post("/pins", newPin);
       setPins([...pins, res.data]);
       setShowPopup(null);
     } catch (error) {
@@ -77,7 +76,7 @@ function App() {
       <div></div>
       <ReactMapGL
         {...viewport}
-        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
+        mapboxApiAccessToken="pk.eyJ1Ijoic291cmFiaHBhdG9sZSIsImEiOiJjbDI0YXlwYnkwNmYzM2RxaXJlbDhrZmNzIn0._bmhA5IBBQrDh-GMaLGZ7A"
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
         mapStyle="mapbox://styles/sourabhpatole/cl0iddh2h000m14ru0c8zxgmi"
         onDblClick={handleAddClick}

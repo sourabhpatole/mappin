@@ -1,7 +1,6 @@
 import { Cancel, Room } from "@material-ui/icons";
 import axios from "axios";
 import { useRef, useState } from "react";
-import { axiosInstance } from "../config";
 import "./register.css";
 
 export default function Register({ setShowRegister }) {
@@ -20,7 +19,7 @@ export default function Register({ setShowRegister }) {
     };
 
     try {
-      await axiosInstance.post("/users/register", newUser);
+      await axios.post("/users/register", newUser);
       setError(false);
       setSuccess(true);
     } catch (err) {
