@@ -5,6 +5,7 @@ import axios from "axios";
 import "./app.css";
 import Register from "./components/Register.jsx";
 import Login from "./components/Login.jsx";
+import { axiosInstance } from "./config";
 
 function App() {
   const myStorage = window.localStorage;
@@ -29,7 +30,7 @@ function App() {
   useEffect(() => {
     const getPins = async () => {
       try {
-        const res = await axios.get("/pins");
+        const res = await axiosInstance.get("/pins");
         setPins(res.data);
       } catch (error) {
         console.log(error);
@@ -64,7 +65,7 @@ function App() {
       long: newPlace.long,
     };
     try {
-      const res = await axios.post("/pins", newPin);
+      const res = await axiosInstance.post("/pins", newPin);
       setPins([...pins, res.data]);
       setShowPopup(null);
     } catch (error) {
