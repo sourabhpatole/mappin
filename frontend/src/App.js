@@ -76,7 +76,7 @@ function App() {
       <div></div>
       <ReactMapGL
         {...viewport}
-        mapboxApiAccessToken="pk.eyJ1Ijoic291cmFiaHBhdG9sZSIsImEiOiJjbDI0YXlwYnkwNmYzM2RxaXJlbDhrZmNzIn0._bmhA5IBBQrDh-GMaLGZ7A"
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
         mapStyle="mapbox://styles/sourabhpatole/cl0iddh2h000m14ru0c8zxgmi"
         onDblClick={handleAddClick}
